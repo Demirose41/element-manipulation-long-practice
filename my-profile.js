@@ -11,6 +11,7 @@ window.onload = () => {
     // create UL
     const aboutMe = ["I think I am", "I am I am", "I glad I am", "I know I am"]
     const ul = createUl(aboutMe)
+    ul.setAttribute("class", "my-details")
 
     
     // append ul to body
@@ -24,6 +25,7 @@ function createUl(array){
     for ( const ele of array ){
         let newLi = document.createElement("li")
         newLi.innerText = ele
+        newLi.setAttribute("class", "details")
         ul.appendChild(newLi)
     }
     return ul

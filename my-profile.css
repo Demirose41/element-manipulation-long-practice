@@ -1,0 +1,13 @@
+.name {
+    color: purple;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+}
+
+.my-details {
+    border: 1px solid black;
+}
+
+.details:hover {
+    background-color: aqua;
+}
