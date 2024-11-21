@@ -23,6 +23,30 @@ window.onload = () => {
     h2.innerText = Date().split(" ")[4]
     document.body.appendChild(h2)
     setInterval( function () { h2.innerText = Date().split(" ")[4]}, 1000 )
+
+
+    // birthday countdown 
+    const countdownDiv = document.createElement("div")
+    let times = getTimeTillBirthday()
+
+    countdownDiv.innerHTML = `
+        <p> 
+            Days:<span id= "days">${times.days} </span> 
+            Hours:<span id= "hours">${times.hours}</span>
+            Minutes:<span id="minutes">${times.minutes}</span>
+            Seconds: <span id="seconds">${times.seconds}</span>
+        </p>
+        <p>
+            till BIRTHMAS 
+        </p>
+    `;
+
+    document.body.appendChild(countdownDiv)
+
+    setInterval( function () {updateTimeTillBirthday()}, 1000)
+    
+    
+
 }
 
 // part 1B
@@ -36,4 +60,37 @@ function createUl(array){
         ul.appendChild(newLi)
     }
     return ul
+}
+
+function getTimeTillBirthday(){
+    let timesLeft = {
+        days: undefined,
+        hours: undefined,
+        minutes: undefined,
+        seconds: undefined
+        
+        // 86,400,000ms/ day
+        // 3,600,000ms / hour
+        // 60,000ms / minute
+        // 1000ms / second
+    }
+    const birthday = Date.parse("18 May 2025 00:12:00 GMT");
+    let timeTil = birthday - Date.now();
+    timesLeft.days = Math.floor(timeTil / 86400000) ;
+    timeTil = (timeTil % 86400000);
+    timesLeft.hours = Math.floor(timeTil / 3600000);
+    timeTil = ( timeTil % 3600000)
+    timesLeft.minutes = Math.floor( timeTil / 60000 );
+    timeTil = ( timeTil % 60000 );
+    timesLeft.seconds = Math.floor(timeTil / 1000);
+
+    return timesLeft
+}
+
+function updateTimeTillBirthday(){
+    const times = getTimeTillBirthday();
+    document.querySelector("#seconds").innerText = times.seconds
+    document.querySelector("#minutes").innerText = times.minutes
+    document.querySelector("#hours").innerText = times.hours
+    document.querySelector("#days").innerText = times.days
 }
