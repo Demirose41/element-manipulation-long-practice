@@ -16,6 +16,13 @@ window.onload = () => {
     
     // append ul to body
     document.body.appendChild(ul)
+
+    // add clock
+    const h2 = document.createElement("h2");
+    h2.setAttribute("id","clock")
+    h2.innerText = Date().split(" ")[4]
+    document.body.appendChild(h2)
+    setInterval( function () { h2.innerText = Date().split(" ")[4]}, 1000 )
 }
 
 // part 1B
